@@ -15,11 +15,12 @@ model User {
   isAdmin   Boolean?  @default(false)
 }
 
-model Post {
-  id        Int     @id @default(autoincrement())
-  published Boolean @default(false)
-  title     String
-  content   String?
-  author    User?   @relation(fields: [authorId], references: [id])
-  authorId  Int?
-}
+// model Post {
+//   id        Int     @id @default(autoincrement())
+//   published Boolean @default(false)
+//   title     String
+//   content   String?
+//   authorId  Int?
+
+//   // author    User?   @relation(fields: [authorId], references: [id])
+// }
