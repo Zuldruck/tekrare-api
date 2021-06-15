@@ -8,5 +8,6 @@ export const User = objectType({
     t.nonNull.string('email');
     t.nonNull.string('password');
     t.nonNull.boolean('isAdmin');
+    t.string('walletAddress');
   },
 });
