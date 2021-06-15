@@ -106,4 +106,3 @@ dist
 # Prisma
 src/generated/
 *.db
-prisma/migrations/
