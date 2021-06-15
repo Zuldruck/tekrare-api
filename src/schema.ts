@@ -1,4 +1,4 @@
-import { makeSchema } from 'nexus';
+import { makeSchema, fieldAuthorizePlugin } from 'nexus';
 import { definitions } from './definitions';
 import { mutation } from './schema/mutation';
 import { query } from './schema/query';
@@ -29,4 +29,7 @@ export const schema = makeSchema({
       },
     ],
   },
+  plugins: [
+    fieldAuthorizePlugin(),
+  ],
 });
