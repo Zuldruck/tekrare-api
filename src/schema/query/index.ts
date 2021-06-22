@@ -1,7 +1,7 @@
 import {
-  nonNull,
   queryType,
   intArg,
+  stringArg,
 } from 'nexus';
 import { Context } from '../../context';
 
@@ -17,12 +17,14 @@ export const query = queryType({
     t.nonNull.field('user', {
       type: 'User',
       args: {
-        id: nonNull(intArg()),
+        id: intArg(),
+        walletAddress: stringArg(),
       },
-      resolve(_, { id }, ctx: Context) {
-        return ctx.prisma.user.findUnique({
-          where: { id },
-        });
+      resolve(_, { id, walletAddress }: any, ctx: Context) {
+        if (!id && !walletAddress)
+          throw new Error('Either id or address is needed.');
+        const where = id ? { id } : { walletAddress };
+        return ctx.prisma.user.findUnique({ where });
       }
     });
   },
